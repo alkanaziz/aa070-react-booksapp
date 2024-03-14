@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useBookContext } from '../BooksContext'
 
 function BookSearch() {
+  const { fetchBooks, books } = useBookContext()
   const [searchTerm, setSearchTerm] = useState('')
 
   const handleSearch = (e) => {
+    fetchBooks(searchTerm)
     e.preventDefault()
   }
   return (
@@ -19,7 +22,7 @@ function BookSearch() {
           />
           <button
             type="submit"
-            className="rounded-r-md bg-teal-950 px-4 py-2 font-bold text-white hover:bg-teal-800 focus:outline-none focus:ring-2 active:scale-95 focus:ring-teal-600 focus:ring-opacity-50"
+            className="rounded-r-md bg-teal-950 px-4 py-2 font-bold text-white hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-opacity-50 active:scale-95"
           >
             Search
           </button>
